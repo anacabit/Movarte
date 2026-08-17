@@ -851,14 +851,15 @@ function drawBird(g,mx,my,r){
   g.beginPath();g.moveTo(mx-r*.15,my+r*.35);g.lineTo(mx-r*.15,my+r*.55);g.moveTo(mx+r*.10,my+r*.35);g.lineTo(mx+r*.10,my+r*.55);g.stroke();
 }
 function drawFish(g,mx,my,r){
+
+  g.beginPath();g.arc(mx-r*.48,my-r*.10,r*.075,0,Math.PI*2);g.fillStyle='#fff';g.fill();g.stroke();
+  g.beginPath();g.arc(mx-r*.48,my-r*.10,r*.035,0,Math.PI*2);g.fillStyle='#111';g.fill();g.strokeStyle='#111';g.fillStyle='#fff';
+  [[r*.85,-r*.55,r*.08],[r*1.05,-r*.78,r*.055],[r*.70,-r*.90,r*.045]].forEach(q=>{g.beginPath();g.arc(mx+q[0],my+q[1],q[2],0,Math.PI*2);g.fill();g.stroke();})
   g.beginPath();g.ellipse(mx-r*.18,my,r*.63,r*.38,0,0,Math.PI*2);g.fill();g.stroke();
   g.beginPath();g.moveTo(mx+r*.38,my);g.lineTo(mx+r*.90,my-r*.40);g.lineTo(mx+r*.90,my+r*.40);g.closePath();g.fill();g.stroke();
   g.beginPath();g.moveTo(mx-r*.10,my-r*.30);g.quadraticCurveTo(mx+r*.05,my-r*.68,mx+r*.28,my-r*.25);g.closePath();g.fill();g.stroke();
   g.beginPath();g.moveTo(mx-r*.05,my+r*.30);g.quadraticCurveTo(mx+r*.10,my+r*.60,mx+r*.28,my+r*.25);g.closePath();g.fill();g.stroke();
-  g.beginPath();g.arc(mx-r*.48,my-r*.10,r*.075,0,Math.PI*2);g.fillStyle='#fff';g.fill();g.stroke();
-  g.beginPath();g.arc(mx-r*.48,my-r*.10,r*.035,0,Math.PI*2);g.fillStyle='#111';g.fill();g.strokeStyle='#111';g.fillStyle='#fff';
-  [[r*.85,-r*.55,r*.08],[r*1.05,-r*.78,r*.055],[r*.70,-r*.90,r*.045]].forEach(q=>{g.beginPath();g.arc(mx+q[0],my+q[1],q[2],0,Math.PI*2);g.fill();g.stroke();});
-}
+                      } 
 function fStar(g,mx,my,pts,ro,ri){g.beginPath();for(let i=0;i<pts*2;i++){const rd=i%2===0?ro:ri;const a=Math.PI*i/pts-Math.PI/2;if(i===0)g.moveTo(mx+rd*Math.cos(a),my+rd*Math.sin(a));else g.lineTo(mx+rd*Math.cos(a),my+rd*Math.sin(a));}g.closePath();}
 function fHeart(g,mx,my,sz){const s=sz/2;g.beginPath();g.moveTo(mx,my+s*.8);g.bezierCurveTo(mx-s*1.2,my-s*.2,mx-s*1.5,my-s*.9,mx,my-s*.5);g.bezierCurveTo(mx+s*1.5,my-s*.9,mx+s*1.2,my-s*.2,mx,my+s*.8);}
 function fDiamond(g,mx,my,s){g.beginPath();g.moveTo(mx,my-s/2);g.lineTo(mx+s/2,my);g.lineTo(mx,my+s/2);g.lineTo(mx-s/2,my);g.closePath();}
